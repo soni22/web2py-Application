@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S'<class \'_mysql_exceptions.OperationalError\'> (1050, "Table \'auth_user\' already exists")'
+p3
+sS'layer'
+p4
+S'/home/monika/Desktop/web2py/applications/MYBAZAAR/models/db.py'
+p5
+sS'code'
+p6
+S"db = DAL('mysql://root:monika@localhost/database2')\n    \nfrom gluon.tools import Auth, Crud, Service, PluginManager, prettydate\nauth = Auth(db)\ncrud, service, plugins = Crud(db), Service(), PluginManager()\n\n## configure email\nmail = auth.settings.mailer\nmail.settings.server = 'logging' or 'smtp.gmail.com:587'\nmail.settings.sender = 'you@gmail.com'\nmail.settings.login = 'username:password'\n\n## configure auth policy\nauth.settings.registration_requires_verification = False\nauth.settings.registration_requires_approval = False\nauth.settings.reset_password_requires_verification = True\nauth.define_tables(username=True, signature=False)\nauth.settings.registration_requires_approval = True\nauth.settings.actions_disabled=['change_password','request_reset_password','profile','forgot_username','retrieve_username','remember']\n\n##from gluon.contrib.login_methods.basic_auth import basic_auth\nauth.settings.login_methods.append(  basic_auth('https://basic.example.com'))\n##from gluon.contrib.login_methods.rpx_account import use_janrain\nuse_janrain(auth, filename='private/janrain.key')\n\n##from gluon.contrib.login_methods.pam_auth import pam_auth\n##auth.settings.login_methods=[pam_auth()]\n\ndb.define_table('requests' , \nField('user_id','integer'),\nField('email_id','string'),\nField('phone_no','integer'),\nField('category','string'),\nField('sub_category' , 'string'),\nField('item_name','string'),\nField('description','string'),\nField('price','integer'),\nField('purpose','string'))\n\ndb.define_table('orders' ,\nField('user_id','integer'),\nField('category','string'),\nField('sub_category','string'),\nField('item_name','string') ,\nField('buyer_name','string'),\nField('email_id','string'),\nField('phone_no','integer'))\n"
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/home/monika/Desktop/web2py/gluon/restricted.py", line 212, in restricted\n    exec ccode in environment\n  File "/home/monika/Desktop/web2py/applications/MYBAZAAR/models/db.py", line 17, in <module>\n    auth.define_tables(username=True, signature=False)\n  File "/home/monika/Desktop/web2py/gluon/tools.py", line 1538, in define_tables\n    format=\'%(username)s\'))\n  File "/home/monika/Desktop/web2py/gluon/dal.py", line 7652, in define_table\n    table = self.lazy_define_table(tablename,*fields,**args)\n  File "/home/monika/Desktop/web2py/gluon/dal.py", line 7689, in lazy_define_table\n    polymodel=polymodel)\n  File "/home/monika/Desktop/web2py/gluon/dal.py", line 957, in create_table\n    self.create_sequence_and_triggers(query,table)\n  File "/home/monika/Desktop/web2py/gluon/dal.py", line 1738, in create_sequence_and_triggers\n    self.execute(query)\n  File "/home/monika/Desktop/web2py/gluon/dal.py", line 1753, in execute\n    return self.log_execute(*a, **b)\n  File "/home/monika/Desktop/web2py/gluon/dal.py", line 1747, in log_execute\n    ret = self.cursor.execute(*a, **b)\n  File "/usr/local/lib/python2.7/dist-packages/MySQL_python-1.2.3-py2.7-linux-x86_64.egg/MySQLdb/cursors.py", line 174, in execute\n    self.errorhandler(self, exc, value)\n  File "/usr/local/lib/python2.7/dist-packages/MySQL_python-1.2.3-py2.7-linux-x86_64.egg/MySQLdb/connections.py", line 36, in defaulterrorhandler\n    raise errorclass, errorvalue\nOperationalError: (1050, "Table \'auth_user\' already exists")\n'
+p11
+s.
